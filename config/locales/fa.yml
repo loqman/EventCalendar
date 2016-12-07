@@ -1,0 +1,51 @@
+fa:
+  application_title: 'تقویم رویداد'
+  login:
+    info: "برای ورود اطلاعات خود را وارد نمایید"
+  devise:
+    sessions:
+      new:
+        title: "ورود به سامانه"
+    registrations:
+      new:
+        title: "عضویت در سامانه"
+  mongoid:
+    models:
+      user:
+        one: 'کاربر'
+        other: 'کاربران'
+      event:
+        one: 'رویداد'
+        other: 'رویدادها'
+    attributes:
+      user:
+        email: 'رایانامه'
+        password: 'رمزعبور'
+        password_confirmation: 'تایید رمز عبور'
+        remember_me: 'من را به خاطر بسپار'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'رایانامه نمی‌تواند خالی باشد.'
+              invalid: 'آدرس رایانامه معتبر نیست.'
+            password:
+              blank: 'رمزعبور نمی‌تواند خالی باشد.'
+              too_short: 'رمزعبور کوتاه است.'
+            password_confirmation:
+              confirmation: 'با رمزعبور هم‌خوانی ندارد.'
+  buttons:
+    sign_in: "ورود"
+    sign_up: "ثبت اطلاعات"
+  links:
+    sign_in: "ورود به سامانه"
+    sign_up: "عضویت در سامانه"
+    forget_your_password: "رمز عبور خود را فراموش کرده‌اید؟"
+    get_confirmation_instructions: "دستورات فعال‌سازی را دریافت نکرده‌اید؟"
+    get_unlock_instructions: "دستورات بازگشایی حساب را دریافت نکرده‌اید؟"
+    sign_out: "خروج"
+    nav:
+      home: "خانه"
+  sign_up:
+    info: "اطلاعات خود را وارد نمایید:"

@@ -1,0 +1,26 @@
+body {
+  background-color: #43525A;
+  font-family: Yekan, Tahoma;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl !important;
+}
+
+.sign-in {
+  direction: rtl;
+  width: 420px;
+  margin: 60px auto 40px auto;
+  border-width: 0;
+  .card-header {
+    background-color: #4A90E2;
+    color: #ffffff;
+    text-align: center;
+    font-size: 26px;
+    padding: 20px 0;
+  }
+}
