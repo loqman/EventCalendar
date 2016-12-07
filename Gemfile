@@ -14,6 +14,7 @@ gem 'redis', '~> 3.0'
 gem 'mongoid', '~> 6.0.0'
 gem 'devise', '~> 4.2.0'
 gem 'devise-i18n', '~> 1.1.0'
+gem 'omniauth-google-oauth2'
 gem 'simple_form', '~> 3.3.1'
 gem 'farsifu', '~> 0.5.1'
 gem 'jalalidate', '~> 0.3.3'
@@ -25,6 +26,12 @@ gem 'tether-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'mongoid-rspec', github: 'chocoken517/mongoid-rspec'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
