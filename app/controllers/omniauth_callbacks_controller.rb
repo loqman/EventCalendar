@@ -1,6 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def google_oauth2
+    puts request.env['omniauth'].inspect
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?

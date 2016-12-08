@@ -31,6 +31,7 @@ class User
   field :omniauth_avatar_url, type: String
   field :omniauth_provider, type: String
   field :omniauth_uid, type: String
+  field :omniauth_token, type: String
 
   has_and_belongs_to_many :events
 
@@ -38,6 +39,7 @@ class User
     where(omniauth_provider: auth.provider, omniauth_uid: auth.uid).first_or_create do |user|
       user.omniauth_provider = auth.provider
       user.omniauth_uid = auth.uid
+      user.omniauth_token = auth.credentials.token
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
