@@ -9,8 +9,8 @@ class Event
   field :from_google, type: Boolean, default: false
   field :g_synced, type: Boolean, default: false
   field :color, type: String
-  field :author, type: User
-  field :edited_by, type: User
+  field :author_id, type: String
+  field :edited_by_id, type: String
 
   has_and_belongs_to_many :users
 

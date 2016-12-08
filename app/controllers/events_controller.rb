@@ -16,7 +16,15 @@ class EventsController < ApplicationController
   end
 
   def create
-
+    @event = current_user.events.new event_params
+    @event.author_id = current_user.id.to_s
+    respond_to do |format|
+      if @event.save
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit

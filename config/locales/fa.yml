@@ -43,6 +43,14 @@ fa:
               too_short: 'رمزعبور کوتاه است.'
             password_confirmation:
               confirmation: 'با رمزعبور هم‌خوانی ندارد.'
+        event:
+          attributes:
+            title:
+              blank: 'عنوان نمی‌تواند خالی باشد.'
+            start_date:
+              blank: 'زمان شروع را مشخص کنید.'
+            end_date:
+              blank: 'زمان پایان را مشخص کنید.'
   buttons:
     sign_in: "ورود"
     sign_up: "ثبت اطلاعات"
