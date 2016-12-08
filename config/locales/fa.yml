@@ -71,7 +71,12 @@ fa:
     nav:
       home: "خانه"
     google_login: "ورود با گوگل"
+    delete_event: "حذف"
+    edit_event: "ویرایش"
+    share_event: "همرسان"
   sign_up:
     info: "اطلاعات خود را وارد نمایید:"
   title:
     new_event: "رویداد جدید"
+    edit_event: "ویرایش رویداد"
+    show_event: "نمایش رویداد"

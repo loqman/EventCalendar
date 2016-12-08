@@ -113,6 +113,7 @@ GEM
     hashie (3.4.6)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    icalendar (2.4.1)
     jalalidate (0.3.3)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -303,6 +304,7 @@ DEPENDENCIES
   flamegraph
   font-awesome-sass (~> 4.6.2)
   guard-livereload (~> 2.5)
+  icalendar
   jalalidate (~> 0.3.3)
   jbuilder (~> 2.5)
   jquery-rails

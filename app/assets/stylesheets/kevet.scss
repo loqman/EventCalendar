@@ -1,12 +1,19 @@
+@font-face {
+  font-family: 'English Text';
+  src: local('Calibri'), local('Monaco');
+  unicode-range: U+00-FF, U+980-9FF;
+}
+
 body {
   background-color: #43525A;
-  font-family: iranyekan, Yekan, Tahoma;
+  font-family: 'English Text', iranyekan, Yekan, Tahoma;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Roya;
 }
 
+// Utility Classes
 .ltr {
   direction: ltr;
   font-family: Roya, Monaco, "Liberation Mono", Courier, monospace;
@@ -18,6 +25,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .help-text {
   color: maroon;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .sign-in {

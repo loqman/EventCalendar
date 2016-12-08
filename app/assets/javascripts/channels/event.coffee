@@ -18,13 +18,34 @@ $(document).on 'turbolinks:load', ->
       console.log data
       if data['type'] == 'eventCreated'
         console.log 'EventCreated'
+        eventId = data['event']['_id']['$oid']
+        if $("#event_#{eventId}").length == 0
+          eventData =
+            id: data['event']['_id']['$oid']
+            title: data['event']['title']
+            start: data['event']['start_date']
+            end: data['event']['end_date']
+            color: data['event']['color']
+          console.log eventData
+          $('.calendar').fullCalendar('renderEvent', eventData)
+        else
+          console.log 'Event already in the grid'
+
+      else if data['type'] == 'eventUpdated'
+        console.log 'EventUpdated'
+        eventId = data['event']['_id']['$oid']
+        elementId = "#event_#{eventId}"
+        $('.calendar').fullCalendar('removeEvents', eventId)
         eventData =
+          id: data['event']['_id']['$oid']
           title: data['event']['title']
           start: data['event']['start_date']
           end: data['event']['end_date']
           color: data['event']['color']
         console.log eventData
-        $('.calendar').fullCalendar('renderEvent', eventData, true)
+        $('.calendar').fullCalendar('renderEvent', eventData)
+
+
 
     share: ->
       @perform 'share'

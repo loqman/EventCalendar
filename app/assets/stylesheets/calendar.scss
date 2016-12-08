@@ -29,6 +29,25 @@
     .fc-center {
       direction: rtl;
     }
+    .fc-day-grid-event .fc-time {
+      display: none;
+    }
+    .fc-title {
+      color: #ffffff;
+    }
+  }
+  .event-block {
+    dt {
+      font-family: Roay, Yekan;
+      color: #1f5c8f;
+      font-size: 14px;
+    }
+    .card-header {
+    font-size: 16px;
+    text-align: center;
+    background-color: #4A90E2;
+    color: #ffffff;
+    }
   }
   .event_color {
     position: relative;

@@ -18,5 +18,16 @@ class Event
 
   validates_presence_of :title, :start_date, :end_date, :start_date_jalali, :end_date_jalali
 
+  def author_name
+    User.find(self.author_id).name
+  end
+
+  def edited_by_name
+    if self.edited_by_id
+      @edited_by_name ||= User.find(self.edited_by_id).name
+    else
+      false
+    end
+  end
 
 end
