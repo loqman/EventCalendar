@@ -26,7 +26,9 @@ fa:
       event:
         title: 'عنوان'
         start_date: 'زمان آغاز'
+        start_date_jalali: 'زمان آغاز'
         end_date: 'زمان پایان'
+        end_date_jalali: 'زمان پایان'
         description: 'شرح'
         author: 'ایجاد کننده'
         edited_by: 'ویرایش کننده'
@@ -50,6 +52,10 @@ fa:
             start_date:
               blank: 'زمان شروع را مشخص کنید.'
             end_date:
+              blank: 'زمان پایان را مشخص کنید.'
+            start_date_jalali:
+              blank: 'زمان شروع را مشخص کنید.'
+            end_date_jalali:
               blank: 'زمان پایان را مشخص کنید.'
   buttons:
     sign_in: "ورود"

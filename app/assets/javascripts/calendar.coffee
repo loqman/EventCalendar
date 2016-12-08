@@ -47,13 +47,19 @@ $(document).on 'turbolinks:load', ->
   calendar_select = (start_date, end_date) ->
 #console.log start, end
 # title = prompt('Event Title:');
-    $('#event_start_date').val start_date
-    $('#event_start_date').pDatepicker
+    $('#event_start_date_jalali').val start_date
+    $('#event_start_date_jalali').pDatepicker
       persianDigit: true
+      altField: '#event_start_date'
+      altFormat: 'g'
       timePicker:
         enabled: true
-    $('#event_end_date').val end_date
-    $('#event_end_date').pDatepicker()
+    $('#event_end_date_jalali').val end_date
+    $('#event_end_date_jalali').pDatepicker
+      altField: '#event_end_date'
+      altFormat: 'g'
+      timePicker:
+        enabled: true
     eventData = {}
     window.date_time = start_date
 #    if (title)

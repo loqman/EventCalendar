@@ -22,6 +22,7 @@ $(document).on 'turbolinks:load', ->
           title: data['event']['title']
           start: data['event']['start_date']
           end: data['event']['end_date']
+          color: data['event']['color']
         console.log eventData
         $('.calendar').fullCalendar('renderEvent', eventData, true)
 
