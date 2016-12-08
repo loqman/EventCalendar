@@ -2,8 +2,10 @@
 <div class="card-block">
   <%= simple_form_for(@event) do |f| %>
       <%= f.input :title %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
+      <%= f.input :start_date, input_html: { class: 'ltr' } %>
+      <%= f.input :end_date, input_html: { class: 'ltr' } %>
       <%= f.input :description %>
+      <%= f.input :color, input_html: { class: 'ltr', style:'width: 77%;', readonly: true, 'data-palette' =>'["#304FFE","#00B8D4","#00C853","#FFD600","#FF6D00","#FF1744","#3D5AFE","#00E5FF","#00E676","#FFEA00","#FF9100","#FF5252","#536DFE","#18FFFF","#69F0AE","#FFFF00","#FFAB40"]', value: "#053F32" } %>
+      <%= f.submit t('buttons.save_event'), class: 'btn btn-outline-primary btn-block' %>
   <% end %>
 </div>

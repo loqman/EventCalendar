@@ -17,9 +17,11 @@
 //= require bootstrap
 //= require fullcalendar/moment.min
 //= require fullcalendar/moment-jalaali
+//= require fullcalendar/moment-timezone.min
 //= require fullcalendar/fullcalendar
 //= require fullcalendar/locale/fa
 //= require persian-calendar/persian-date-0.1.8
 //= require persian-calendar/persian-datepicker-0.4.5
+//= require color-palette/palette-color-picker
 //= require calendar
 // require_tree .

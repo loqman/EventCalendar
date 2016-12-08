@@ -30,6 +30,7 @@ fa:
         description: 'شرح'
         author: 'ایجاد کننده'
         edited_by: 'ویرایش کننده'
+        color: 'رنگ'
     errors:
       models:
         user:
@@ -45,6 +46,7 @@ fa:
   buttons:
     sign_in: "ورود"
     sign_up: "ثبت اطلاعات"
+    save_event: "ذخیره رویداد"
   links:
     sign_in: "ورود به سامانه"
     sign_up: "عضویت در سامانه"

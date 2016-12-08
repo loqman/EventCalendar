@@ -30,5 +30,16 @@
       direction: rtl;
     }
   }
+  .event_color {
+    position: relative;
+    .palette-color-picker-button {
+      position: absolute;
+      left: 8px;
+      top: 38px;
+    }
+    .palette-color-picker-bubble {
+      left: 0;
+    }
+  }
 }
 
