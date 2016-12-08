@@ -18,7 +18,7 @@ gem 'omniauth-google-oauth2'
 gem 'simple_form', '~> 3.3.1'
 gem 'farsifu', '~> 0.5.1'
 gem 'jalalidate', '~> 0.3.3'
-
+gem 'icalendar', require: 'icalendar'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem 'tether-rails'
