@@ -74,6 +74,7 @@ fa:
     delete_event: "حذف"
     edit_event: "ویرایش"
     share_event: "همرسان"
+    new_event: "جدید"
   sign_up:
     info: "اطلاعات خود را وارد نمایید:"
   title:

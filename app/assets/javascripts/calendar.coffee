@@ -106,6 +106,18 @@ $(document).on 'turbolinks:load', ->
       timePicker:
         enabled: true
 
+  view_render = (view, element) ->
+    data =
+      start_date: view.start._d
+      end_date: view.end._d
+    console.log data
+    $.post '/get_events.json', data, (result) ->
+      console.log result
+      for event in result
+        console.log event
+        $('.calendar').fullCalendar('renderEvent', event)
+      #$('.calendar').fullCalendar(result)
+
   $('.calendar').fullCalendar
     header:
       left: 'next,prev today'
@@ -117,6 +129,7 @@ $(document).on 'turbolinks:load', ->
     selectHelper: true
     select: calendar_select
     eventAfterRender: after_event_rendered
+    viewRender: view_render
     eventLimit: true
     isJalaali: true
     isRTL: true

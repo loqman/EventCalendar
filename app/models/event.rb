@@ -10,7 +10,7 @@ class Event
   field :description, type: String
   field :from_google, type: Boolean, default: false
   field :g_synced, type: Boolean, default: false
-  field :color, type: String
+  field :color, type: String, default: '#FFEA00'
   field :author_id, type: String
   field :edited_by_id, type: String
 

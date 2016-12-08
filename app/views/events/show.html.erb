@@ -2,13 +2,13 @@
 <div class="card-block">
   <dl>
     <dt><%= Event.human_attribute_name :title %></dt>
-    <dd><%= @event.title %></dd>
+    <dd><%= @event.title.to_farsi %></dd>
     <dt><%= Event.human_attribute_name :start_date_jalali %></dt>
     <dd><%= @event.start_date_jalali.to_farsi %></dd>
     <dt><%= Event.human_attribute_name :end_date_jalali %></dt>
     <dd><%= @event.end_date_jalali.to_farsi %></dd>
     <dt><%= Event.human_attribute_name :description %></dt>
-    <dd><%= @event.description %></dd>
+    <dd><%= @event.description.to_farsi %></dd>
     <dt><%= Event.human_attribute_name :author %></dt>
     <dd><%= @event.author_name %></dd>
     <% if @event.edited_by_name %>
@@ -17,10 +17,11 @@
     <% end %>
   </dl>
 </div>
-<div class="card-footer text-center">
+<div class="card-footer text-center" style="padding: 5px;">
   <%= link_to t('links.delete_event'), @event, method: :delete, class: 'btn btn-outline-danger btn-sm', id: 'delete_event' %>
   <%= link_to t('links.edit_event'), edit_event_path, class: 'btn btn-outline-info btn-sm', id: 'edit_event' %>
-  <%= link_to t('links.share_event'), @event, method: :delete, class: 'btn btn-outline-success btn-sm share-button', id: 'share_event' %>
+  <%= link_to t('links.share_event'), @event, method: :delete, class: 'btn btn-outline-success btn-sm', id: 'share_event' %>
+  <%= link_to t('links.new_event'), new_event_path, class: 'btn btn-outline-primary btn-sm', id: 'new_event' %>
 </div>
 <script type="text/javascript" charset="utf-8">
   $('#delete_event').on('click', function (event) {

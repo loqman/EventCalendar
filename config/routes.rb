@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'calendar#index'
   resources :events
+  post '/get_events' => 'events#get_events'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   mount ActionCable.server => '/cable'

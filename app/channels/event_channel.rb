@@ -3,7 +3,6 @@ class EventChannel < ApplicationCable::Channel
   def subscribed
     channel = "user_#{params[:userId]}_channel"
     stream_from channel
-    ActionCable.server.broadcast channel, type: 'eventCreated', event: Event.last
   end
 
   def unsubscribed
@@ -12,4 +11,6 @@ class EventChannel < ApplicationCable::Channel
 
   def share
   end
+
+
 end

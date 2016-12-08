@@ -7,6 +7,17 @@ class EventsController < ApplicationController
 
   end
 
+  def get_events
+    puts "=============="
+    puts params.inspect
+    start_date = DateTime.parse params[:start_date]
+    end_date = DateTime.parse params[:end_date]
+    @events = current_user.events.where(start_date: start_date..end_date)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def show
     respond_to do |format|
       format.html { render layout: false }
@@ -49,7 +60,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    # @event.destroy
+    @event.destroy
     respond_to do |format|
       format.json { render json: { eventId: @event.id.to_s }, status: :ok }
     end
