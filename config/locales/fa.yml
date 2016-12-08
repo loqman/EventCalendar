@@ -23,6 +23,13 @@ fa:
         password: 'رمزعبور'
         password_confirmation: 'تایید رمز عبور'
         remember_me: 'من را به خاطر بسپار'
+      event:
+        title: 'عنوان'
+        start_date: 'زمان آغاز'
+        end_date: 'زمان پایان'
+        description: 'شرح'
+        author: 'ایجاد کننده'
+        edited_by: 'ویرایش کننده'
     errors:
       models:
         user:
@@ -50,3 +57,5 @@ fa:
     google_login: "ورود با گوگل"
   sign_up:
     info: "اطلاعات خود را وارد نمایید:"
+  title:
+    new_event: "رویداد جدید"

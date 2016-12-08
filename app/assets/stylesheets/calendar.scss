@@ -21,8 +21,14 @@
   margin-top: 50px;
   background-color: #ffffff;
   overflow: hidden;
+  .padding-top {
+    padding-top: 50px;
+  }
   .calendar {
     margin: 25px 10px;
+    .fc-center {
+      direction: rtl;
+    }
   }
 }
 

@@ -1,0 +1,9 @@
+<h4 class="card-header"><%= t('title.new_event') %></h4>
+<div class="card-block">
+  <%= simple_form_for(@event) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :description %>
+  <% end %>
+</div>

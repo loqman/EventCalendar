@@ -498,18 +498,18 @@ extend(getPrototypeOf(moment.localeData()),
       return this._jMonths[m.jMonth()]
     }
 
-  , _jMonthsShort:  [ 'Far'
-                    , 'Ord'
-                    , 'Kho'
-                    , 'Tir'
-                    , 'Amo'
-                    , 'Sha'
-                    , 'Meh'
-                    , 'Aab'
-                    , 'Aaz'
-                    , 'Dey'
-                    , 'Bah'
-                    , 'Esf'
+  , _jMonthsShort:  [ 'فروردین'
+                    , 'اردیبهشت'
+                    , 'خرداد'
+                    , 'تیر'
+                    , 'مرداد'
+                    , 'شهریور'
+                    , 'مهر'
+                    , 'آبان'
+                    , 'آذر'
+                    , 'دی'
+                    , 'بهمن'
+                    , 'اسفند'
                     ]
   , jMonthsShort: function (m) {
       return this._jMonthsShort[m.jMonth()]

@@ -19,5 +19,7 @@
 //= require fullcalendar/moment-jalaali
 //= require fullcalendar/fullcalendar
 //= require fullcalendar/locale/fa
+//= require persian-calendar/persian-date-0.1.8
+//= require persian-calendar/persian-datepicker-0.4.5
 //= require calendar
 // require_tree .

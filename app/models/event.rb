@@ -3,10 +3,16 @@ class Event
   include Mongoid::Timestamps
 
   field :title, type: String
-  field :date, type: DateTime
+  field :start_date, type: DateTime
+  field :end_date, type: DateTime
   field :description, type: String
+  field :from_google, type: Boolean, default: false
+  field :g_synced, type: Boolean, default: false
+  field :color, type: String
   field :author, type: User
   field :edited_by, type: User
 
   has_and_belongs_to_many :users
+
+  validates_presence_of :title, :start_date, :end_date
 end
