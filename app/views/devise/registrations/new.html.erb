@@ -2,6 +2,12 @@
   <div class="card-header">
     <%= t('.title') %>
   </div>
+  <div class="card-block google-login">
+    <a href="<%= user_google_oauth2_omniauth_authorize_path %>" class="btn btn-block btn-secondary btn-danger">
+      <%= t('links.google_login') %>
+      <%= icon 'google' %>
+    </a>
+  </div>
   <div class="card-block">
     <h4 class="card-title"><%= t('sign_up.info') %></h4>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
