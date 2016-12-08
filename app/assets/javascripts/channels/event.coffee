@@ -45,6 +45,10 @@ $(document).on 'turbolinks:load', ->
         console.log eventData
         $('.calendar').fullCalendar('renderEvent', eventData)
 
+      else if data['type'] == 'eventDestroyed'
+        console.log 'EventDestroyed'
+        $('.calendar').fullCalendar('removeEvents', data['eventId'])
+
 
 
     share: ->

@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   new_event_path = $('.event-block').data('new-event');
-  console.log new_event_path
 
   # loading event informatio remotely
   window.load_event_information = (eventId) ->
@@ -20,10 +19,8 @@ $(document).on 'turbolinks:load', ->
       # Ajax form handling for event
       $('.new_event').on("ajax:success", (e, data, status, xhr) ->
         $('.new_event .help-text').detach()
-        console.log xhr.responseText
       ).on("ajax:error", (e, xhr, status, error) ->
         $('.new_event .help-text').detach()
-        console.log xhr.responseText
         response = $.parseJSON(xhr.responseText)
         Object.keys(response).forEach (field) ->
           field_id = "#event_#{field}"
@@ -41,11 +38,9 @@ $(document).on 'turbolinks:load', ->
         # Ajax form handling for event
         $('.edit_event').on("ajax:success", (e, data, status, xhr) ->
           $('.edit_event .help-text').detach()
-          console.log xhr.responseText
           window.load_event_information(eventId)
         ).on("ajax:error", (e, xhr, status, error) ->
           $('.edit_event .help-text').detach()
-          console.log xhr.responseText
           response = $.parseJSON(xhr.responseText)
           Object.keys(response).forEach (field) ->
             field_id = "#event_#{field}"
@@ -80,7 +75,6 @@ $(document).on 'turbolinks:load', ->
         clear_btn: null
 
   $('.event-block').on 'click', '#delete_event', (event) ->
-    console.log 'here'
     event.preventDefault()
 
   after_event_rendered = (event, element, view) ->
@@ -110,11 +104,9 @@ $(document).on 'turbolinks:load', ->
     data =
       start_date: view.start._d
       end_date: view.end._d
-    console.log data
     $.post '/get_events.json', data, (result) ->
-      console.log result
+      $('.calendar').fullCalendar('removeEvents')
       for event in result
-        console.log event
         $('.calendar').fullCalendar('renderEvent', event)
       #$('.calendar').fullCalendar(result)
 

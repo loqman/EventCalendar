@@ -1,15 +1,13 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_id, only: [:create, :update]
+  before_action :set_user_id, only: [:create, :update, :destroy]
 
   def index
 
   end
 
   def get_events
-    puts "=============="
-    puts params.inspect
     start_date = DateTime.parse params[:start_date]
     end_date = DateTime.parse params[:end_date]
     @events = current_user.events.where(start_date: start_date..end_date)
@@ -61,6 +59,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
+    ActionCable.server.broadcast "user_#{@user_id}_channel", type: 'eventDestroyed', eventId: @event.id.to_s
     respond_to do |format|
       format.json { render json: { eventId: @event.id.to_s }, status: :ok }
     end
