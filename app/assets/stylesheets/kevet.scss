@@ -1,6 +1,10 @@
 body {
   background-color: #43525A;
-  font-family: Yekan, Tahoma;
+  font-family: iranyekan, Yekan, Tahoma;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Roya;
 }
 
 .ltr {
@@ -22,5 +26,9 @@ body {
     text-align: center;
     font-size: 26px;
     padding: 20px 0;
+  }
+  .google-login {
+    background-color: #E5EFFB !important;
+    padding: 30px 20px;
   }
 }
