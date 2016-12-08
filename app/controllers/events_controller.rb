@@ -18,8 +18,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new event_params
     @event.author_id = current_user.id.to_s
+    user_id = current_user.id.to_s
     respond_to do |format|
       if @event.save
+        ActionCable.server.broadcast "user_#{user_id}_channel", type: 'eventCreated', event: @event
         format.json { render :show, status: :created, location: @event }
       else
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -40,7 +42,6 @@ class EventsController < ApplicationController
   end
 
   def share
-
   end
 
   private

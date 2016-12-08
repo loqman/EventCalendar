@@ -3,12 +3,12 @@
 <head>
   <title><%= t 'application_title' %></title>
   <%= csrf_meta_tags %>
-
+  <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
+<body data-user-id="<%= current_user.id.to_s %>">
   <nav class="navbar navbar-light navbar-full navbar-fixed-top bg-faded rtl">
     <a class="navbar-brand pull-right" href="<%= root_path %>">
       <%= image_tag 'calendar.png', width: 30, height: 30, class: 'align-top' %>

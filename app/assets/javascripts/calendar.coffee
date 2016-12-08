@@ -56,12 +56,12 @@ $(document).on 'turbolinks:load', ->
     $('#event_end_date').pDatepicker()
     eventData = {}
     window.date_time = start_date
-    if (title)
-      eventData =
-        title: title
-        start: start
-        end: end_date
-      $('.calendar').fullCalendar('renderEvent', eventData, true)
+#    if (title)
+#      eventData =
+#        title: title
+#        start: start
+#        end: end_date
+#      $('.calendar').fullCalendar('renderEvent', eventData, true)
   #$('.calendar').fullCalendar('unselect')
 
 

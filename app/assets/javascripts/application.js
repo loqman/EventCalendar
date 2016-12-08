@@ -24,4 +24,6 @@
 //= require persian-calendar/persian-datepicker-0.4.5
 //= require color-palette/palette-color-picker
 //= require calendar
+//= require cable
+//= require channels/event
 // require_tree .
