@@ -50,7 +50,7 @@
 <script type="text/javascript" charset="utf-8">
     $('#delete_event').on('click', function (event) {
         event.preventDefault();
-        href = $(this).attr('href') + '.json';
+        var href = $(this).attr('href') + '.json';
         $.ajax({
             url: href,
             type: 'DELETE',
@@ -64,13 +64,13 @@
     });
     $('#edit_event').on('click', function (event) {
         event.preventDefault();
-        href = $(this).attr('href');
+        var href = $(this).attr('href');
         load_edit_event_panel(href, '<%= @event.id.to_s %>');
         return false;
     });
     $('#share_event').on('click', function (event) {
         event.preventDefault();
-        display_share_panel();
+        display_share_panel('<%= @event.id.to_s %>');
         return false;
     });
     $('#new_event').on('click', function (event) {

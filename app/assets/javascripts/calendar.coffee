@@ -34,6 +34,17 @@ $(document).on 'turbolinks:load', ->
       $.get path, (data) ->
         $('.event-block').empty()
         $('.event-block').append $(data)
+        $('#event_start_date_jalali').pDatepicker
+          persianDigit: true
+          altField: '#event_start_date'
+          altFormat: 'g'
+          timePicker:
+            enabled: true
+        $('#event_end_date_jalali').pDatepicker
+          altField: '#event_end_date'
+          altFormat: 'g'
+          timePicker:
+            enabled: true
         window.load_color_palette()
         # Ajax form handling for event
         $('.edit_event').on("ajax:success", (e, data, status, xhr) ->
@@ -50,16 +61,17 @@ $(document).on 'turbolinks:load', ->
         )
 
     # displaying share form
-    window.display_share_panel =  ->
+    window.display_share_panel =  (eventId) ->
       $('.share-event').css('display', 'block');
         # Ajax form handling for event
       $('.edit_event').on("ajax:success", (e, data, status, xhr) ->
         $('.share-event').stop().animate({ height: 0, padding: 0 }, 500, ->
           $('.share-event').css('display', 'none')
+          window.load_event_information(eventId)
         )
       ).on("ajax:error", (e, xhr, status, error) ->
         response = $.parseJSON(xhr.responseText)
-
+        window.load_event_information(eventId)
       )
 
 
