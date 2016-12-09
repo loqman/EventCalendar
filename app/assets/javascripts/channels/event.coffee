@@ -28,6 +28,12 @@ $(document).on 'turbolinks:load', ->
             color: data['event']['color']
           console.log eventData
           $('.calendar').fullCalendar('renderEvent', eventData)
+          $.notify {
+            message: 'رویداد ' + "<b>#{eventData.title}</b> " + 'ایجاد شد'
+
+          }, {
+           type: 'success'
+          }
         else
           console.log 'Event already in the grid'
 
@@ -44,10 +50,20 @@ $(document).on 'turbolinks:load', ->
           color: data['event']['color']
         console.log eventData
         $('.calendar').fullCalendar('renderEvent', eventData)
+        $.notify {
+          message: 'رویداد ' + "<b>#{eventData.title}</b> " + 'به‌روزرسانی شد'
+        }, {
+          type: 'success'
+        }
 
       else if data['type'] == 'eventDestroyed'
         console.log 'EventDestroyed'
         $('.calendar').fullCalendar('removeEvents', data['eventId'])
+        $.notify {
+          message: 'رویداد حذف شد شد'
+        }, {
+          type: 'success'
+        }
 
       else if data['type'] == 'eventShared'
         console.log 'EventShared'
@@ -61,6 +77,7 @@ $(document).on 'turbolinks:load', ->
             color: data['event']['color']
           console.log eventData
           $('.calendar').fullCalendar('renderEvent', eventData)
+          $.notify { message: 'رویداد ' + "<b>#{eventData.title}</b> " + 'با شما به اشتراک گذاشته شد'}, { type: 'success' }
         else
           console.log 'Event already in the grid'
 

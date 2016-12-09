@@ -17,7 +17,9 @@
       </div>
     </div>
 <% end %>
-<div class="card-block">
+<div class="card-block
+  <% if @event.from_google %>google-event
+  <% end %>">
   <dl>
     <dt><%= Event.human_attribute_name :title %></dt>
     <dd><%= @event.title.to_farsi %></dd>
@@ -39,7 +41,9 @@
 </div>
 <div class="card-footer text-center" style="padding: 5px;">
   <%= link_to icon('trash') + t('links.delete_event'), @event, method: :delete, class: 'btn btn-outline-danger btn-sm', id: 'delete_event' %>
-  <%= link_to icon('edit') + t('links.edit_event'), edit_event_path, class: 'btn btn-outline-info btn-sm', id: 'edit_event' %>
+  <% unless @event.from_google %>
+      <%= link_to icon('edit') + t('links.edit_event'), edit_event_path, class: 'btn btn-outline-info btn-sm', id: 'edit_event' %>
+  <% end %>
   <%= link_to icon('share-alt') + t('links.share_event'), @event, method: :delete, class: 'btn btn-outline-success btn-sm', id: 'share_event' %>
   <%= link_to icon('plus-square-o') + t('links.new_event'), new_event_path, class: 'btn btn-outline-primary btn-sm', id: 'new_event' %>
 </div>

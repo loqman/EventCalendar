@@ -42,6 +42,12 @@
       cursor: pointer;
     }
   }
+  .google-event {
+    background-image: url(asset_path('g_logo.png'));
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: bottom;
+  }
   .event-block {
     dt {
       font-family: Roay, Yekan;

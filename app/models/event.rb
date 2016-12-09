@@ -24,7 +24,12 @@ class Event
     if self.from_google
       self.g_author
     else
-      User.find(self.author_id).name
+      user = User.find(self.author_id)
+      if user.name.nil?
+        return user.email
+      else
+        return user.name
+      end
     end
   end
 
