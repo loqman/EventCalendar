@@ -9,18 +9,21 @@
 </head>
 
 <body data-user-id="<%= current_user.id.to_s %>">
-  <nav class="navbar navbar-light navbar-full navbar-fixed-top bg-faded rtl">
-    <a class="navbar-brand pull-right" href="<%= root_path %>">
-      <%= image_tag 'calendar.png', width: 30, height: 30, class: 'align-top' %>
-      <%= t('application_title') %>
-    </a>
-    <ul class="nav navbar-nav rtl">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><%= t('links.nav.home') %> <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-    <%= link_to t('links.sign_out'), destroy_user_session_path, method: 'delete', class: 'btn btn-outline-danger pull-left' %>
-  </nav>
+<nav class="navbar navbar-light navbar-full navbar-fixed-top bg-faded rtl">
+  <a class="navbar-brand pull-right" href="<%= root_path %>">
+    <%= image_tag 'calendar.png', width: 30, height: 30, class: 'align-top' %>
+    <%= t('application_title') %>
+  </a>
+  <ul class="nav navbar-nav rtl">
+    <li class="nav-item active">
+      <a class="nav-link" href="#"><%= t('links.nav.home') %> <span class="sr-only">(current)</span></a>
+    </li>
+  </ul>
+  <p class="pull-left" style="padding: 0; margin: 0;">
+    <%= link_to t('links.export_icalendar'), export_icalendar_path, class: 'btn btn-outline-info' %>
+    <%= link_to t('links.sign_out'), destroy_user_session_path, method: 'delete', class: 'btn btn-outline-danger' %>
+  </p>
+</nav>
 <div class="container container-calendar">
   <%= yield %>
 </div>

@@ -77,6 +77,7 @@ fa:
     edit_event: "ویرایش"
     share_event: "همرسان"
     new_event: "جدید"
+    export_icalendar: "خروجی iCalendar"
   sign_up:
     info: "اطلاعات خود را وارد نمایید:"
   title:

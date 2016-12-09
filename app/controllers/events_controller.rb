@@ -87,6 +87,21 @@ class EventsController < ApplicationController
     end
   end
 
+  def icalendar
+    events = current_user.events
+    ical = Icalendar::Calendar.new
+    events.each do |event|
+      ical.event do |e|
+        e.dtstart = Icalendar::Values::DateTime.new(event.start_date)
+        e.dtend = Icalendar::Values::DateTime.new(event.end_date)
+        e.summary = event.title.to_farsi
+        e.description = event.description.to_farsi
+      end
+    end
+    ical_output = ical.to_ical
+    send_data ical_output, filename: "#{current_user.email}_#{Date.today.to_s.gsub(/\s+/, '-')}.ics"
+  end
+
   private
   def event_params
     params.require('event').permit!
