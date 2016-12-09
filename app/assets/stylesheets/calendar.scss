@@ -22,7 +22,7 @@
   background-color: #ffffff;
   overflow: hidden;
   .padding-top {
-    padding-top: 50px;
+    padding-top: 20px;
   }
   .calendar {
     margin: 25px 10px;
@@ -44,6 +44,10 @@
       font-family: Roay, Yekan;
       color: #1f5c8f;
       font-size: 14px;
+    }
+    .fa {
+      vertical-align: bottom;
+      padding-left: 3px;
     }
     .card-header {
     font-size: 16px;
