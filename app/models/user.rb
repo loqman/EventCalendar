@@ -32,6 +32,7 @@ class User
   field :omniauth_provider, type: String
   field :omniauth_uid, type: String
   field :omniauth_token, type: String
+  field :omniauth_refresh_token, type: String
 
   has_and_belongs_to_many :events, autosave: true
 
@@ -40,6 +41,7 @@ class User
       user.omniauth_provider = auth.provider
       user.omniauth_uid = auth.uid
       user.omniauth_token = auth.credentials.token
+      user.omniauth_refresh_token = auth.credentials.refresh_token
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name

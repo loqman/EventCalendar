@@ -102,6 +102,40 @@ class EventsController < ApplicationController
     send_data ical_output, filename: "#{current_user.email}_#{Date.today.to_s.gsub(/\s+/, '-')}.ics"
   end
 
+  def gcal
+    calendar_id = 'primary'
+    # Create an instance of the calendar.
+    calendar = Google::Calendar.new(:client_id     => @@google_app_id,
+                               :client_secret => @@google_app_secret,
+                               :calendar      => calendar_id,
+                               :redirect_url  => "urn:ietf:wg:oauth:2.0:oob") # this is what Google uses for 'applications'
+
+    calendar.login_with_refresh_token(current_user.omniauth_refresh_token)
+    g_events = calendar.events
+    g_events.each do |event|
+      start_time = DateTime.parse event.start_time
+      end_time = DateTime.parse event.end_time
+      start_time_jalali = JalaliDate.new(start_time).to_s.gsub('/', '-') + ' ' + start_time.strftime('%I:%M:%S %p')
+      end_time_jalali = JalaliDate.new(end_time).to_s.gsub('/', '-') + ' ' + end_time.strftime('%I:%M:%S %p')
+      event_data = { id: event.id,
+                     g_html_link: event.html_link,
+                     g_author: event.creator_name,
+                     start_date: event.start_time,
+                     end_date: event.end_time,
+                     start_date_jalali: start_time_jalali,
+                     end_date_jalali: end_time_jalali,
+                     title: event.title,
+                     description: event.raw['description'],
+                     from_google: true,
+                     g_synced: true, color: '#db4437'}
+      current_user.events.create! event_data
+      puts '========='
+      puts event_data
+      puts '========='
+    end
+    redirect_to root_path
+  end
+
   private
   def event_params
     params.require('event').permit!

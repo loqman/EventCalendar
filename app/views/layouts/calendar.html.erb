@@ -20,6 +20,7 @@
     </li>
   </ul>
   <p class="pull-left" style="padding: 0; margin: 0;">
+    <%= link_to "#{t('links.import_google_calendar')} #{icon('google')}".html_safe, import_google_calendar_path, class: 'btn btn-danger' %>
     <%= link_to t('links.export_icalendar'), export_icalendar_path, class: 'btn btn-outline-info' %>
     <%= link_to t('links.sign_out'), destroy_user_session_path, method: 'delete', class: 'btn btn-outline-danger' %>
   </p>

@@ -25,8 +25,10 @@
     <dd><%= farsi_date @event.start_date_jalali.to_farsi %></dd>
     <dt><%= Event.human_attribute_name :end_date_jalali %></dt>
     <dd><%= farsi_date @event.end_date_jalali %></dd>
-    <dt><%= Event.human_attribute_name :description %></dt>
-    <dd><%= @event.description.to_farsi %></dd>
+    <% unless @event.description.nil? %>
+        <dt><%= Event.human_attribute_name :description %></dt>
+        <dd><%= @event.description.to_farsi %></dd>
+    <% end %>
     <dt><%= Event.human_attribute_name :author %></dt>
     <dd><%= @event.author_name %></dd>
     <% if @event.edited_by_name %>
@@ -42,34 +44,34 @@
   <%= link_to icon('plus-square-o') + t('links.new_event'), new_event_path, class: 'btn btn-outline-primary btn-sm', id: 'new_event' %>
 </div>
 <script type="text/javascript" charset="utf-8">
-  $('#delete_event').on('click', function (event) {
-    event.preventDefault();
-    href = $(this).attr('href') + '.json';
-    $.ajax({
-      url: href,
-      type: 'DELETE',
-      success: function (data) {
-        console.log(data.eventId);
-        $('#event_' + data.eventId).detach();
+    $('#delete_event').on('click', function (event) {
+        event.preventDefault();
+        href = $(this).attr('href') + '.json';
+        $.ajax({
+            url: href,
+            type: 'DELETE',
+            success: function (data) {
+                console.log(data.eventId);
+                $('#event_' + data.eventId).detach();
+                load_new_event_panel();
+            }
+        })
+        return false;
+    });
+    $('#edit_event').on('click', function (event) {
+        event.preventDefault();
+        href = $(this).attr('href');
+        load_edit_event_panel(href, '<%= @event.id.to_s %>');
+        return false;
+    });
+    $('#share_event').on('click', function (event) {
+        event.preventDefault();
+        display_share_panel();
+        return false;
+    });
+    $('#new_event').on('click', function (event) {
+        event.preventDefault();
         load_new_event_panel();
-      }
-    })
-    return false;
-  });
-  $('#edit_event').on('click', function (event) {
-    event.preventDefault();
-    href = $(this).attr('href');
-    load_edit_event_panel(href, '<%= @event.id.to_s %>');
-    return false;
-  });
-  $('#share_event').on('click', function (event) {
-    event.preventDefault();
-    display_share_panel();
-    return false;
-  });
-  $('#new_event').on('click', function (event) {
-    event.preventDefault();
-    load_new_event_panel();
-    return false;
-  });
+        return false;
+    });
 </script>
