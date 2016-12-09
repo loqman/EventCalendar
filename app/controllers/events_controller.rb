@@ -51,7 +51,10 @@ class EventsController < ApplicationController
     @event.edited_by_id = current_user.id.to_s
     respond_to do |format|
       if @event.update event_params
-        ActionCable.server.broadcast "user_#{@user_id}_channel", type: 'eventUpdated', event: @event
+        @event.users.each do |user|
+          user_id = user.id.to_s
+          ActionCable.server.broadcast "user_#{user_id}_channel", type: 'eventUpdated', event: @event
+        end
         format.json { render :show, status: :created, location: @event }
       else
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -60,8 +63,11 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event.users.each do |user|
+      user_id = user.id.to_s
+      ActionCable.server.broadcast "user_#{user_id}_channel", type: 'eventDestroyed', eventId: @event.id.to_s
+    end
     @event.destroy
-    ActionCable.server.broadcast "user_#{@user_id}_channel", type: 'eventDestroyed', eventId: @event.id.to_s
     respond_to do |format|
       format.json { render json: {eventId: @event.id.to_s}, status: :ok }
     end
@@ -74,9 +80,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         ActionCable.server.broadcast "user_#{audience}_channel", type: 'eventShared', event: @event
-        format.json { render json: { success: true }, status: :ok }
+        format.json { render json: {success: true}, status: :ok }
       else
-        format.json { render json: { success: false }, status: :unprocessable_entity }
+        format.json { render json: {success: false}, status: :unprocessable_entity }
       end
     end
   end
@@ -93,5 +99,6 @@ class EventsController < ApplicationController
   def set_user_id
     @user_id = current_user.id.to_s
   end
+
 
 end
