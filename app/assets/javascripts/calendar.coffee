@@ -86,6 +86,10 @@ $(document).on 'turbolinks:load', ->
 
 
   calendar_select = (start_date, end_date) ->
+    window.date = start_date
+    if $('.fc-month-view').length > 0
+      start_date = start_date.locale('en').tz('Etc/UTC').format('gggg-MM-DD HH:mm:ss')
+      end_date = end_date.locale('en').tz('Etc/UTC').format('gggg-MM-DD HH:mm:ss')
     $('#event_start_date_jalali').val start_date
     $('#event_start_date_jalali').pDatepicker
       persianDigit: true
@@ -122,13 +126,14 @@ $(document).on 'turbolinks:load', ->
     select: calendar_select
     eventAfterRender: after_event_rendered
     viewRender: view_render
-    eventLimit: true
+    eventLimit: false
     isJalaali: true
     isRTL: true
     lang: 'fa'
     timezone: 'local'
 
   load_new_event_panel()
+  moment.tz.add("Etc/UTC|UTC|0|0|")
 
 
 
