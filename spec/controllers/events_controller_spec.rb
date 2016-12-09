@@ -27,6 +27,7 @@ RSpec.describe EventsController, type: :controller do
   let(:valid_session) { {} }
 
   describe 'GET #index' do
+    login_user
     it 'assigns all event as @posts' do
       event = Event.create! valid_attributes
       get :index, params: {}, session: valid_session

@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'mongoid-rspec', github: 'chocoken517/mongoid-rspec'
+  gem 'factory_girl_rails'
 end
 
 group :test do
