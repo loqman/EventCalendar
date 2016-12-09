@@ -54,7 +54,7 @@ $(document).on 'turbolinks:load', ->
       $('.share-event').css('display', 'block');
         # Ajax form handling for event
       $('.edit_event').on("ajax:success", (e, data, status, xhr) ->
-        $('.share-event').stop().animate({ height: 0, padding: 0 }, 5000, ->
+        $('.share-event').stop().animate({ height: 0, padding: 0 }, 500, ->
           $('.share-event').css('display', 'none')
         )
       ).on("ajax:error", (e, xhr, status, error) ->
