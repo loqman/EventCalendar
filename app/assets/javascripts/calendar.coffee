@@ -134,6 +134,9 @@ $(document).on 'turbolinks:load', ->
     data =
       start_date: view.start._d
       end_date: view.end._d
+    $('#start_date_field').val view.start._d
+    $('#end_date_field').val view.end._d
+    console.log data
     $.post '/get_events.json', data, (result) ->
       $('.calendar').fullCalendar('removeEvents')
       for event in result
