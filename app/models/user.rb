@@ -33,7 +33,7 @@ class User
   field :omniauth_uid, type: String
   field :omniauth_token, type: String
 
-  has_and_belongs_to_many :events
+  has_and_belongs_to_many :events, autosave: true
 
   def self.from_omniauth(auth)
     where(omniauth_provider: auth.provider, omniauth_uid: auth.uid).first_or_create do |user|

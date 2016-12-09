@@ -1,4 +1,22 @@
 <h4 class="card-header"><%= t('title.show_event') %></h4>
+<% if @users.count > 0 %>
+    <div class="card-block share-event" style="display: none;">
+      <%= simple_form_for(@event, wrapper: :horizontal_form, url: share_event_path(@event), method: 'post', remote: true) do |f| %>
+          <%= f.input :audience, collection: @users, selected: @users.first.id %>
+          <div class="col-xs-12" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-outline-success pull-left">
+              <%= icon('share-alt') + t('buttons.share_event') %>
+            </button>
+          </div>
+      <% end %>
+    </div>
+<% else %>
+    <div class="card-block share-event" style="display: none;">
+      <div class="col-xs-12" style="margin-top: 10px;">
+        <h5 class="text-center text-primary"><%= t('messages.not_one_to_share_with') %></h5>
+      </div>
+    </div>
+<% end %>
 <div class="card-block">
   <dl>
     <dt><%= Event.human_attribute_name :title %></dt>
@@ -46,6 +64,7 @@
   });
   $('#share_event').on('click', function (event) {
     event.preventDefault();
+    display_share_panel();
     return false;
   });
   $('#new_event').on('click', function (event) {

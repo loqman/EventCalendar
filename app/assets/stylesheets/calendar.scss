@@ -58,6 +58,18 @@
     background-color: #4A90E2;
     color: #ffffff;
     }
+    .share-event {
+      background-color: #c6d6f1;
+      padding: 3px 10px 10px 10px;
+      .control-label {
+        color: #204B6E;
+        text-align: left;
+        padding-top: 5px;
+      }
+      .col-sm-9 {
+        padding-right: 0;
+      }
+    }
   }
   .event_color {
     position: relative;

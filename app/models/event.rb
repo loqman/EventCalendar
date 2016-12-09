@@ -14,7 +14,7 @@ class Event
   field :author_id, type: String
   field :edited_by_id, type: String
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, autosave: true
 
   validates_presence_of :title, :start_date, :end_date, :start_date_jalali, :end_date_jalali
 
@@ -28,6 +28,10 @@ class Event
     else
       false
     end
+  end
+
+  def audience
+
   end
 
 end

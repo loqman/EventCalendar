@@ -49,6 +49,21 @@ $(document).on 'turbolinks:load', ->
         console.log 'EventDestroyed'
         $('.calendar').fullCalendar('removeEvents', data['eventId'])
 
+      else if data['type'] == 'eventShared'
+        console.log 'EventShared'
+        eventId = data['event']['_id']['$oid']
+        if $("#event_#{eventId}").length == 0
+          eventData =
+            id: data['event']['_id']['$oid']
+            title: data['event']['title']
+            start: data['event']['start_date']
+            end: data['event']['end_date']
+            color: data['event']['color']
+          console.log eventData
+          $('.calendar').fullCalendar('renderEvent', eventData)
+        else
+          console.log 'Event already in the grid'
+
 
 
     share: ->

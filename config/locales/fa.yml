@@ -33,6 +33,7 @@ fa:
         author: 'ایجاد کننده'
         edited_by: 'ویرایش کننده'
         color: 'رنگ'
+        audience: 'مخاطب'
     errors:
       models:
         user:
@@ -61,6 +62,7 @@ fa:
     sign_in: "ورود"
     sign_up: "ثبت اطلاعات"
     save_event: "ذخیره رویداد"
+    share_event: "همرسانی"
   links:
     sign_in: "ورود به سامانه"
     sign_up: "عضویت در سامانه"
@@ -81,3 +83,5 @@ fa:
     new_event: "رویداد جدید"
     edit_event: "ویرایش رویداد"
     show_event: "نمایش رویداد"
+  messages:
+    not_one_to_share_with: "کاربری برای همرسانی وجود ندارد."

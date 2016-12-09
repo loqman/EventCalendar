@@ -4,7 +4,7 @@
 $(document).on 'turbolinks:load', ->
   new_event_path = $('.event-block').data('new-event');
 
-  # loading event informatio remotely
+  # loading event information remotely
   window.load_event_information = (eventId) ->
     $.get "/events/#{eventId}", (data) ->
       $('.event-block').empty()
@@ -48,6 +48,20 @@ $(document).on 'turbolinks:load', ->
               node = $("<span class='help-text'>#{err}</span>")
               node.insertAfter(field_id)
         )
+
+    # displaying share form
+    window.display_share_panel =  ->
+      $('.share-event').css('display', 'block');
+        # Ajax form handling for event
+      $('.edit_event').on("ajax:success", (e, data, status, xhr) ->
+        $('.share-event').stop().animate({ height: 0, padding: 0 }, 5000, ->
+          $('.share-event').css('display', 'none')
+        )
+      ).on("ajax:error", (e, xhr, status, error) ->
+        response = $.parseJSON(xhr.responseText)
+
+      )
+
 
     # Color swatch
     window.load_color_palette = ->
@@ -134,7 +148,3 @@ $(document).on 'turbolinks:load', ->
 
   load_new_event_panel()
   moment.tz.add("Etc/UTC|UTC|0|0|")
-
-
-
-

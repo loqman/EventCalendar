@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :share]
   before_action :set_user_id, only: [:create, :update, :destroy]
 
   def index
@@ -17,6 +17,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    user_ids = @event.users.map { |u| u.id.to_s }
+    @users = User.not_in(id: user_ids)
     respond_to do |format|
       format.html { render layout: false }
       format.json
@@ -61,11 +63,22 @@ class EventsController < ApplicationController
     @event.destroy
     ActionCable.server.broadcast "user_#{@user_id}_channel", type: 'eventDestroyed', eventId: @event.id.to_s
     respond_to do |format|
-      format.json { render json: { eventId: @event.id.to_s }, status: :ok }
+      format.json { render json: {eventId: @event.id.to_s}, status: :ok }
     end
   end
 
   def share
+    audience = params[:event][:audience]
+    @target_user = User.find audience
+    @event.users.push @target_user
+    respond_to do |format|
+      if @event.save
+        ActionCable.server.broadcast "user_#{audience}_channel", type: 'eventShared', event: @event
+        format.json { render json: { success: true }, status: :ok }
+      else
+        format.json { render json: { success: false }, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
